@@ -9,9 +9,9 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
-    var webView: WKWebView!
+    @objc var webView: WKWebView!
     private var websites: [String] = ["apple.com", "hackingwithswift.com"]
-    
+    private var progressView: UIProgressView!
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
@@ -25,6 +25,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         setupToolbarItems()
+        setupProgressView()
+        setupObserver()
     }
     
     private func setupToolbarItems() {
@@ -34,16 +36,27 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func setupProgressView() {
-        let progressView = UIProgressView()
+        progressView = UIProgressView(progressViewStyle: .default)
         progressView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(progressView)
         
         NSLayoutConstraint.activate([
             progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            progressView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -1),
-            progressView.bottomAnchor.constraint(equalTo: navigationController!.toolbar.topAnchor)
+            progressView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            progressView.heightAnchor.constraint(equalToConstant: 2)
         ])
+    }
+    
+    
+    private func setupObserver() {
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
+        }
     }
 
     @objc func openTapped() {
