@@ -16,6 +16,7 @@
 		1B6E44C527BB107900406118 /* Project4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E44C427BB107900406118 /* Project4Tests.swift */; };
 		1B6E44CF27BB107900406118 /* Project4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E44CE27BB107900406118 /* Project4UITests.swift */; };
 		1B6E44D127BB107900406118 /* Project4UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E44D027BB107900406118 /* Project4UITestsLaunchTests.swift */; };
+		1B6E44DE27BBE63E00406118 /* WebSiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E44DD27BBE63E00406118 /* WebSiteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1B6E44CA27BB107900406118 /* Project4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Project4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6E44CE27BB107900406118 /* Project4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project4UITests.swift; sourceTree = "<group>"; };
 		1B6E44D027BB107900406118 /* Project4UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project4UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1B6E44DD27BBE63E00406118 /* WebSiteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				1B6E44B627BB107900406118 /* Assets.xcassets */,
 				1B6E44B827BB107900406118 /* LaunchScreen.storyboard */,
 				1B6E44BB27BB107900406118 /* Info.plist */,
+				1B6E44DD27BBE63E00406118 /* WebSiteTableViewController.swift */,
 			);
 			path = Project4;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				1B6E44B227BB107800406118 /* ViewController.swift in Sources */,
 				1B6E44AE27BB107800406118 /* AppDelegate.swift in Sources */,
+				1B6E44DE27BBE63E00406118 /* WebSiteTableViewController.swift in Sources */,
 				1B6E44B027BB107800406118 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +448,6 @@
 				INFOPLIST_FILE = Project4/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -472,7 +475,6 @@
 				INFOPLIST_FILE = Project4/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

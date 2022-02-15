@@ -10,7 +10,7 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
     @objc var webView: WKWebView!
-    private var websites: [String] = ["apple.com", "hackingwithswift.com"]
+    var website: String = "apple.com"
     private var progressView: UIProgressView!
     override func loadView() {
         webView = WKWebView()
@@ -19,9 +19,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(goBack))
         navigationController?.isToolbarHidden = false
-        let url = URL(string: "https://" + websites[0])!
+        let url = URL(string: "https://" + website)!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         setupToolbarItems()
@@ -30,9 +30,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func setupToolbarItems() {
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: webView, action: #selector(webView.goBack))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let forwardButton = UIBarButtonItem(title: "Forward", style: .plain, target: webView, action: #selector(webView.goForward))
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [spacer, refreshButton]
+        toolbarItems = [backButton, spacer, forwardButton, refreshButton]
     }
     
     private func setupProgressView() {
@@ -61,12 +63,16 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
     @objc func openTapped() {
         let ac = UIAlertController(title: "Open page…", message: nil, preferredStyle: .actionSheet)
-        for website in websites {
-            ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
-        }
+//        for website in websites {
+//            ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+//        }
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
         present(ac, animated: true)
+    }
+    
+    @objc func goBack() {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func openPage(alert:UIAlertAction) {
